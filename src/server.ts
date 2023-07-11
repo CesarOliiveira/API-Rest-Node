@@ -1,4 +1,4 @@
-import fastify, {FastifyRequest, FastifyReply} from "fastify";
+import fastify from "fastify";
 import { userRoutes } from "./routes/routes";
 
 const app = fastify();
@@ -6,6 +6,8 @@ const app = fastify();
 app.register(userRoutes, {
     prefix: 'users',
 })
+
+
 
 
 app.listen({
