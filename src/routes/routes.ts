@@ -1,16 +1,18 @@
 
-import { FastifyInstance, FastifyReply } from "fastify";
+import { FastifyInstance } from "fastify";
 import { CreateUserController } from "../controllers/users/CreateUser-controller";
-import { FindAllUsers } from "../controllers/users/FindAllUsers";
+import { FindUsers } from "../controllers/users/FindUsers";
 
 
 
 export async function userRoutes(app: FastifyInstance) {
     const createUserUseController = new CreateUserController();
-    const findAllUsers = new FindAllUsers(); 
+    const findUsers = new FindUsers(); 
 
     
-    app.get("/", findAllUsers.handle)
+    app.get("/", findUsers.find)
+    app.get("/:id", findUsers.findByID)
+
     app.post("/", createUserUseController.handle)
     
 }

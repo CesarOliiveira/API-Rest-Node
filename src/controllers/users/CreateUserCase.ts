@@ -1,19 +1,27 @@
 import { CreateUserDTO } from '../dtos/CreateUserDTO';
 import { prisma } from '../../database/prismaClient';
-import { User } from '@prisma/client';
+import { PasswordCrypto } from '../../services';
 
 export class CreateUserUseCase {
-    async execute({name, email, password}: CreateUserDTO): Promise<User>{
+    async execute({username, email, password}: CreateUserDTO): Promise<Object>{
         
-        const User = await prisma.user.create({
+        password = await PasswordCrypto.hashPassword(password);
+
+        const user = await prisma.user.create({
             data: {
-                name,
+                username,
                 email,
-                password,
+                password
+            },
+            select: {
+                id: true,
+                username: true,
+                email: true,
+                created_at: true
             }
         })
 
-        return User;
+        return user;
 
     }
 }
