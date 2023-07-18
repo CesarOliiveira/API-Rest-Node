@@ -52,28 +52,27 @@
 
 **LOGIN - User Authentication**
 
-    ```bash
-     ##MODEL
+```bash
+   ##MODEL
         {
           "email": "username@gmail.com",
           "password": "password"
         }
-   ```
+```
 
 ```bash
-## RESPONSE
- 201 - Created
-      {
-      	"id": "61d8a0d0-d59a-4b54-9754-b1d2f70a974d",
-      	"username": "username",
-      	"email": "username@gmail.com",
-      	"created_at": "2023-07-18T22:31:14.711Z"
-      }
+   ## RESPONSE
+   209 - Ok
+     {
+    	"code": 1,
+    	"id": "61d8a0d0-d59a-4b54-9754-b1d2f70a974d",
+    	"message": "User Exists"
+     }
 
-    400 - Bad Request
+    404 - NOT FOUND
       {
-      	"message": "User already exists",
-      	"statusCode": 400
+      	"code": 0,
+      	"message": "User NOT Found"
       }
 ```
      
