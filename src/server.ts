@@ -7,7 +7,9 @@ app.register(userRoutes, {
     prefix: 'users',
 })
 
-
+app.get("/", () => {
+    return "Hello world"
+})
 
 
 app.listen({
@@ -17,4 +19,3 @@ app.listen({
     console.log('HTTP Server Running');
 });
 
-export {app}
